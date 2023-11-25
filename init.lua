@@ -285,6 +285,9 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+-- Remap escape
+vim.keymap.set({ 'i', 'v' }, 'kj', '<esc>')
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
