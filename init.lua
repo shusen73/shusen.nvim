@@ -180,6 +180,7 @@ require('lazy').setup({
           statusline = {},     -- only ignores the ft for statusline.
           winbar = {},         -- only ignores the ft for winbar.
         },
+        globalstatus = true,
 
       },
     },
