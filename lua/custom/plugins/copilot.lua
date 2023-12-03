@@ -21,9 +21,11 @@ return {
     local cmp = require 'cmp'
     local copilot = require 'copilot'
     cmp.event:on("menu_opened", function()
+      ---@diagnostic disable-next-line: inject-field
       vim.b.copilot_suggestion_hidden = true
     end)
     cmp.event:on("menu_closed", function()
+      ---@diagnostic disable-next-line: inject-field
       vim.b.copilot_suggestion_hidden = false
     end)
   end,
