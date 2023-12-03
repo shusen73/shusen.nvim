@@ -158,15 +158,6 @@ require('lazy').setup({
   },
 
   {
-    -- Theme
-    'rebelot/kanagawa.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'kanagawa'
-    end,
-  },
-
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
@@ -397,7 +388,7 @@ vim.defer_fn(function()
       'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
 
     highlight = { enable = true },
     indent = { enable = true },
@@ -528,7 +519,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  gopls = {},
+  -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -585,8 +576,10 @@ cmp.setup {
   },
   ---@diagnostic disable-next-line: missing-fields
   completion = {
+    autocomplete = false,
     completeopt = 'menu,menuone,noinsert'
   },
+
   mapping = cmp.mapping.preset.insert {
     -- ['<C-n>'] = cmp.mapping.select_next_item(),
     -- ['<C-Space>'] = cmp.mapping.complete {},
@@ -619,6 +612,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+
   },
 }
 
