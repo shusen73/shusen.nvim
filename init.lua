@@ -327,6 +327,18 @@ require('telescope').setup {
       },
     },
   },
+  pickers = {
+    buffers = {
+      mappings = {
+        i = {
+          ['<c-d>'] = require('telescope.actions').delete_buffer,
+        },
+        n = {
+          ['<c-d>'] = require('telescope.actions').delete_buffer,
+        },
+      }
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
