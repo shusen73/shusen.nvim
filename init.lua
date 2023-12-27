@@ -651,6 +651,7 @@ cmp.setup {
   },
   ---@diagnostic disable-next-line: missing-fields
   completion = {
+    autocomplete = false,
     completeopt = 'menu,menuone,noinsert'
   },
 
