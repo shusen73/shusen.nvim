@@ -25,6 +25,7 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    ---@diagnostic disable-next-line: missing-fields
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -54,6 +55,7 @@ return {
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
+    ---@diagnostic disable-next-line: missing-fields
     dapui.setup {
       -- Set icons to characters that are more likely to work in every terminal.
       --    Feel free to remove or use ones that you like more! :)
