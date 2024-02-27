@@ -84,10 +84,6 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
--- Disable netrw at the very start of your init.lua (strongly advised)
--- Gbrowse depends netrw
-vim.g.loaded_netrwPlugin = 1
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -140,8 +136,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -776,6 +772,11 @@ require('lazy').setup({
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
       require('mini.statusline').setup()
+
+      require('mini.files').setup {
+        -- Map <leader>t to open mini.files
+        vim.keymap.set('n', '<leader>t', require('mini.files').open, { desc = 'Open [T]ree(mini.files)' }),
+      }
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
