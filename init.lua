@@ -152,7 +152,8 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- Remap escape
--- vim.keymap.set({ 'i', 'v' }, 'kj', '<esc>')
+vim.keymap.set({ 'i' }, 'kj', '<esc>')
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -230,10 +231,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
-
-  -- [[ Plugin Specs list ]]
-
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -577,6 +575,9 @@ require('lazy').setup({
                 -- If lua_ls is really slow on your computer, you can try this instead:
                 -- library = { vim.env.VIMRUNTIME },
               },
+              completion = {
+                callSnippet = 'Replace',
+              },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
@@ -604,15 +605,11 @@ require('lazy').setup({
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            require('lspconfig')[server_name].setup {
-              cmd = server.cmd,
-              settings = server.settings,
-              filetypes = server.filetypes,
-              -- This handles overriding only values explicitly passed
-              -- by the server configuration above. Useful when disabling
-              -- certain features of an LSP (for example, turning off formatting for tsserver)
-              capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}),
-            }
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for tsserver)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
           end,
         },
       }
@@ -776,9 +773,15 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      require('mini.statusline').setup()
-      MiniStatusline.section_location = function()
-        return '%2l:%-2v'
+      local statusline = require 'mini.statusline'
+      statusline.setup()
+
+      -- You can confiure sections in the statusline by overriding their
+      -- default behavior. For example, here we disable the section for
+      -- cursor information because line numbers are already enabled
+      ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_location = function()
+        return ''
       end
 
       require('mini.files').setup {
@@ -833,7 +836,7 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information see: :help lazy.nvim-lazy.nvim-structuring-your-plugins
   { import = 'custom.plugins' },
-}, {})
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
