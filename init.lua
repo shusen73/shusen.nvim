@@ -152,7 +152,7 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- Remap escape
-vim.keymap.set({ 'i', 'v' }, 'kj', '<esc>')
+-- vim.keymap.set({ 'i', 'v' }, 'kj', '<esc>')
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -231,6 +231,8 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+
+  -- [[ Plugin Specs list ]]
 
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -768,10 +770,16 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Minimal and fast autopairs
+      require('mini.pairs').setup()
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
       require('mini.statusline').setup()
+      MiniStatusline.section_location = function()
+        return '%2l:%-2v'
+      end
 
       require('mini.files').setup {
         -- Map <leader>t to open mini.files
