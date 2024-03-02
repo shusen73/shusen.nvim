@@ -198,7 +198,7 @@ vim.keymap.set('n', 'n', 'nzzzv', { silent = true })
 vim.keymap.set('n', 'N', 'Nzzzv', { silent = true })
 
 -- [[ Basic Autocommands ]]
---  See :help lua-guide-autocommands
+--  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -274,7 +274,7 @@ require('lazy').setup {
   --  event = 'VeryLazy'
   --
   -- which loads which-key after all the UI elements are loaded. Events can be
-  -- normal autocommands events (:help autocomd-events).
+  -- normal autocommands events (`:help autocmd-events`).
   --
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
@@ -447,7 +447,7 @@ require('lazy').setup {
       -- Neovim. This is where `mason` and related plugins come into play.
       --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-      -- and elegantly composed help section, :help lsp-vs-treesitter
+      -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
@@ -755,7 +755,7 @@ require('lazy').setup {
       -- Better Around/Inside textobjects
       --
       -- Examples:
-      --  - va)  - [V]isually select [A]round [)]parenthen
+      --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [']quote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
@@ -776,7 +776,7 @@ require('lazy').setup {
       local statusline = require 'mini.statusline'
       statusline.setup()
 
-      -- You can confiure sections in the statusline by overriding their
+      -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we disable the section for
       -- cursor information because line numbers are already enabled
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -812,7 +812,7 @@ require('lazy').setup {
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
       --
-      --    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
+      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
