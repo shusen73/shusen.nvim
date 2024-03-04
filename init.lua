@@ -781,7 +781,7 @@ require('lazy').setup {
       -- cursor information because line numbers are already enabled
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
-        return ''
+        return '%P'
       end
 
       require('mini.files').setup {
