@@ -265,6 +265,26 @@ require('lazy').setup {
     },
   },
 
+  -- An interactive and powerful Git interface for Neovim, inspired by Magit
+  {
+    'NeogitOrg/neogit',
+    event = 'VimEnter',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+      'nvim-tree/nvim-web-devicons',
+
+      -- Only one of these is needed, not both.
+      'nvim-telescope/telescope.nvim', -- optional
+      -- 'ibhagwan/fzf-lua', -- optional
+    },
+    config = function() -- This is the function that runs, AFTER loading
+      require('neogit').setup {
+        kind = 'replace',
+      }
+    end,
+  },
+
   -- NOTE: Plugins can also be configured to run lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
