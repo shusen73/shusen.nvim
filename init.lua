@@ -800,7 +800,7 @@ require('lazy').setup({
 
       require('mini.files').setup {
         -- Map <leader>t to open mini.files
-        vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open [T]ree(mini.files)' }),
+        vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open [E]xplorer(mini.files)' }),
       }
 
       -- ... and there is more!
