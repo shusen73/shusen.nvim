@@ -260,6 +260,7 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
     opts = {
       signs = {
         add = { text = '+' },
@@ -568,9 +569,16 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+      -- Registe templ file extension
+      vim.filetype.add { extension = { templ = 'templ' } }
+
       local servers = {
         -- clangd = {},
         gopls = {},
+        templ = {
+          filetypes = { 'templ', 'html' },
+        },
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -631,6 +639,7 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    event = 'VeryLazy',
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
