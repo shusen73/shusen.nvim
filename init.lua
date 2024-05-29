@@ -252,6 +252,23 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   -- // Comment is built in in 0.10 update
+  {
+    'stevearc/oil.nvim',
+    -- Optional dependencies
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('oil').setup {
+        view_options = {
+          show_hidden = true,
+        },
+      }
+      -- Open parent directory in current window
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+      -- Open parent directory in floating window
+      vim.keymap.set('n', '<space>-', require('oil').toggle_float)
+    end,
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -893,14 +910,6 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%P'
       end
-
-      require('mini.files').setup {
-        -- Map <leader>t to open mini.files
-        vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open [E]xplorer(mini.files)' }),
-      }
-
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
   { -- Highlight, edit, and navigate code
