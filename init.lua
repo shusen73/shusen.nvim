@@ -152,7 +152,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+-- vim.opt.scrolloff = 10
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -953,6 +953,10 @@ require('lazy').setup({
         vim.cmd.hi 'TreesitterContextBottom gui=underline guisp=Grey',
         vim.cmd.hi 'TreesitterContextLineNumberBottom gui=underline guisp=Grey',
       }
+      -- To make the context line stay in the same location, added code to this plugin files
+      vim.keymap.set('n', '[c', function()
+        require('treesitter-context').go_to_context(vim.v.count1)
+      end, { silent = true, desc = 'Go to [C]ontext' })
     end,
   },
   {
