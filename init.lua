@@ -943,6 +943,17 @@ require('lazy').setup({
     end,
   },
   {
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesitter-context').setup {
+        multiline_threshold = 1,
+        vim.cmd.hi 'TreesitterContextBottom gui=underline guisp=Grey',
+        vim.cmd.hi 'TreesitterContextLineNumberBottom gui=underline guisp=Grey',
+      }
+    end,
+  },
+  {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {
