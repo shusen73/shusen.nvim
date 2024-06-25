@@ -239,7 +239,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth', evnet = 'VeryLazy' }, -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -254,6 +254,7 @@ require('lazy').setup({
   -- // Comment is built in in 0.10 update
   {
     'stevearc/oil.nvim',
+    -- event = 'VeryLazy', -- won't be used when "nvim ." if lazy load;
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
@@ -486,6 +487,7 @@ require('lazy').setup({
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    evnet = 'VeryLazy',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -579,6 +581,8 @@ require('lazy').setup({
           --  See `:help K` for why this keymap.
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
+          vim.keymap.set('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { buffer = event.buf, desc = 'LSP: ' .. '[S]ignature Help' })
+
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -646,11 +650,11 @@ require('lazy').setup({
 
       local servers = {
         -- clangd = {},
+        lexical = {},
         gopls = {},
         templ = {
           filetypes = { 'templ', 'html' },
         },
-        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -710,7 +714,8 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
-    lazy = false,
+    event = 'VeryLazy',
+    -- lazy = false,
     keys = {
       {
         '<leader>f',
@@ -856,8 +861,6 @@ require('lazy').setup({
       }
     end,
   },
-  { 'savq/melange-nvim' },
-
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -906,6 +909,7 @@ require('lazy').setup({
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    event = 'VeryLazy',
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -972,8 +976,9 @@ require('lazy').setup({
     end,
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
+    'shusen73/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = 'VeryLazy',
     config = function()
       require('treesitter-context').setup {
         multiline_threshold = 1,
@@ -988,6 +993,7 @@ require('lazy').setup({
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    event = 'VeryLazy',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {
       textobjects = {
