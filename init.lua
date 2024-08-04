@@ -602,11 +602,11 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
-          end
+          -- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+          --   map('<leader>th', function()
+          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          --   end, '[T]oggle Inlay [H]ints')
+          -- end
         end,
       })
 
@@ -891,7 +891,6 @@ require('lazy').setup({
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
-    event = 'VeryLazy',
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -928,7 +927,7 @@ require('lazy').setup({
 
       require('mini.files').setup {
         -- Map <leader>t to open mini.files
-        vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = 'Open [E]xplorer(mini.files)' }),
+        vim.keymap.set('n', '<leader>t', require('mini.files').open, { desc = 'Open File [T]ree(mini.files)' }),
       }
 
       -- ... and there is more!
