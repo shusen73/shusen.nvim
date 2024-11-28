@@ -305,22 +305,22 @@ require('lazy').setup({
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   -- An interactive and powerful Git interface for Neovim, inspired by Magit
-  {
-    'NeogitOrg/neogit',
-    event = 'VeryLazy',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
-      'nvim-tree/nvim-web-devicons',
-
-      -- Only one of these is needed, not both.
-      'nvim-telescope/telescope.nvim', -- optional
-      -- 'ibhagwan/fzf-lua', -- optional
-    },
-    config = function() -- This is the function that runs, AFTER loading
-      require('neogit').setup {}
-    end,
-  },
+  -- {
+  --   'NeogitOrg/neogit',
+  --   event = 'VeryLazy',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim', -- required
+  --     'sindrets/diffview.nvim', -- optional - Diff integration
+  --     'nvim-tree/nvim-web-devicons',
+  --
+  --     -- Only one of these is needed, not both.
+  --     'nvim-telescope/telescope.nvim', -- optional
+  --     -- 'ibhagwan/fzf-lua', -- optional
+  --   },
+  --   config = function() -- This is the function that runs, AFTER loading
+  --     require('neogit').setup {}
+  --   end,
+  -- },
 
   -- NOTE: Plugins can also be configured to run lua code when they are loaded.
   --
@@ -382,14 +382,11 @@ require('lazy').setup({
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
-        { '<leader>d_', hidden = true },
         { '<leader>r', group = '[R]ename' },
-        { '<leader>r_', hidden = true },
         { '<leader>s', group = '[S]earch' },
-        { '<leader>s_', hidden = true },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -457,10 +454,10 @@ require('lazy').setup({
         --   },
         -- },
         pickers = {
-          find_files = {
-            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-            find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
-          },
+          -- find_files = {
+          --   -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+          --   find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' },
+          -- },
         },
         extensions = {
           ['ui-select'] = {
@@ -991,7 +988,7 @@ require('lazy').setup({
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
-        return '%P'
+        return '%2l:%-2v'
       end
 
       require('mini.files').setup {
