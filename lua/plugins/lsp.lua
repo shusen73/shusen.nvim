@@ -24,10 +24,11 @@ return {
         end
 
         -- 🧭 Navigation
-        map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
-        map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+        map('gd', require('fzf-lua').lsp_definitions, '[G]oto [d]efinition')
+        map('gr', require('fzf-lua').lsp_references, '[G]oto [r]eferences')
 
         map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+        map('gD', require('fzf-lua').lsp_declarations, '[G]oto [D]eclarations')
 
         map('gT', require('fzf-lua').lsp_typedefs, '[T]ype Definition')
 

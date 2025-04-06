@@ -20,17 +20,13 @@ vim.opt.relativenumber = true -- Show relative line numbers
 vim.opt.cursorline = true -- Highlight the current line
 vim.opt.signcolumn = 'yes' -- Always show sign column to prevent text shifting
 vim.opt.showmode = false -- Hide mode display (use statusline instead)
-vim.opt.list = true -- Show invisible characters
-vim.opt.listchars = { -- Define symbols for invisible characters
-  tab = '» ', -- Tab indicator
-  trail = '·', -- Trailing spaces
-  nbsp = '␣', -- Non-breaking spaces
-}
+vim.opt.winborder = 'rounded'
 
 -- ===============================
 -- ⚡ Behavior Settings
 -- ===============================
 
+vim.opt.updatetime = 250 -- Decrease update time
 vim.opt.mouse = 'a' -- Enable mouse in all modes
 vim.opt.undofile = true -- Persistent undo history
 vim.opt.ignorecase = true -- Case-insensitive search

@@ -4,6 +4,7 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" },
   -- or if using mini.icons/mini.nvim
   dependencies = { 'echasnovski/mini.icons' },
+  event = 'VeryLazy',
   opts = {},
   keys = {
     {
@@ -27,7 +28,6 @@ return {
       end,
       desc = 'Find in neovim configuration',
     },
-
     {
       '<leader>fh',
       function()
