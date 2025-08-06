@@ -5,7 +5,6 @@ return {
   end,
   config = function()
     require('kanagawa').setup {
-      compile = true,
       colors = {
         theme = {
           all = {
